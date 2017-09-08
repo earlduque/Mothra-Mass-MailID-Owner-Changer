@@ -1,0 +1,32 @@
+; let's do it
+; Earl Duque
+; 9/8/17
+
+; This was done very quickly, so there is no validation checks programmed in.
+
+; Make sure both "Mass MailID Owner Change.xlsm" is open
+; and that you have a mothra session named "AutoMothra" opened and it currently looking at the Change MailID Owner screen
+
+; Column A of the workbook should have all the MailIDs that should be changed. With no formatting
+; Modify the MothraID below if needed
+
+; DOWN BELOW, MAKE SURE TO PUT A MOTHRAID!
+
+#q::
+	WinActivate, Mass MailID Owner Change.xlsm - Excel
+	Sleep, 300
+	Xl := ComObjActive("Excel.Application") ;creates a handle to your Application object
+	xl.Run("GrabFirstMailID")
+	CurrentMailID = %clipboard%
+	StringReplace, CurrentMailID,CurrentMailID, `r,, All
+	StringReplace, CurrentMailID,CurrentMailID, `n,, All
+	xl.Run("MoveBgetouttheway")
+	
+	WinActivate, AutoMothra
+	Sleep, 300
+	Send, %CurrentMailID%{Enter}
+	MothraID = 
+	Send, %MothraID%{Enter}c
+	Sleep, 500
+	send, a
+	
